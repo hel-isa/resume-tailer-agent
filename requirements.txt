@@ -3,4 +3,4 @@
 # Install: pip install -r requirements.txt
 
 # HTML-to-PDF rendering for the tailored resume (template.html -> PDF).
-weasyprint==62.3
+weasyprint==69.0
