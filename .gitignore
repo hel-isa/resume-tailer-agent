@@ -17,5 +17,11 @@ Thumbs.db
 .idea/
 .vscode/
 
+# Python / test cruft
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+
 # Keep the examples tracked (do not ignore *.example.md)
 !*.example.md

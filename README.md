@@ -1,5 +1,10 @@
 # Resume Tailor Agent
 
+[![Tests](https://github.com/hel-isa/resume-tailer-agent/actions/workflows/tests.yml/badge.svg)](...)
+[![Security Scanning](https://github.com/hel-isa/resume-tailer-agent/actions/workflows/security.yml/badge.svg)](...)
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11+-blue)]()
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]()
+
 An AI agent that scores job descriptions against a candidate's real experience and generates a truthful, tailored resume PDF only when the fit is strong enough. Built as a security-minded automation project: it treats every job posting as untrusted input, keeps all personal data local, and never fabricates experience.
 
 ## Why this exists
