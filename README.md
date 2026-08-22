@@ -1,5 +1,10 @@
 # Resume Tailor Agent
 
+[![Tests](https://github.com/hel-isa/resume-tailer-agent/actions/workflows/tests.yml/badge.svg)](...)
+[![Security Scanning](https://github.com/hel-isa/resume-tailer-agent/actions/workflows/security.yml/badge.svg)](...)
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11+-blue)]()
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]()
+
 An AI agent that scores job descriptions against a candidate's real experience and generates a truthful, tailored resume PDF only when the fit is strong enough. Built as a security-minded automation project: it treats every job posting as untrusted input, keeps all personal data local, and never fabricates experience.
 
 ## Why this exists
@@ -23,23 +28,24 @@ Job searching at scale is repetitive: read a posting, judge the fit, tailor a re
 
 ## How it works
 
-```
-Job description
-      |
-      v
-[ Dedupe check ] --- already seen? --> return prior verdict (1 line)
-      |
-      v
-[ Hard-disqualifier gate ] --- hard blocker? --> fast-reject (1 line)
-      |
-      v
-[ Trap / prompt-injection scan ] --- trap? --> flag, never comply
-      |
-      v
-[ Score vs profile ] --- below threshold? --> skip + log
-      |
-      v
-[ Generate tailored resume PDF ] --> save + log
+```mermaid
+flowchart TD
+    JD([Job description]) --> DUP{Already<br/>evaluated?}
+    DUP -- yes --> PRIOR[Return prior verdict<br/>one line]
+    DUP -- no --> GATE{Hard<br/>blocker?}
+    GATE -- yes --> FR[Fast-reject<br/>one line + log]
+    GATE -- no --> TRAP{Prompt-injection<br/>trap?}
+    TRAP -- yes --> FLAG[Flag, never comply<br/>+ log]
+    TRAP -- no --> SCORE[Score vs profile<br/>required weighted heavily]
+    SCORE --> TH{Score above<br/>threshold?}
+    TH -- no --> SKIP[Skip + log]
+    TH -- yes --> GEN[Generate tailored<br/>resume PDF]
+    GEN --> LOG[Save + log outcome]
+
+    classDef stop fill:#fbeaea,stroke:#a32d2d,color:#501313;
+    classDef go fill:#e1f5ee,stroke:#0f6e56,color:#04342c;
+    class PRIOR,FR,FLAG,SKIP stop;
+    class GEN,LOG go;
 ```
 
 The scoring logic, disqualifier lists, and honesty rules live in `AGENT.md`. The candidate's facts live in `profile.md` (kept private; see `profile.example.md` for the shape). Resume styling lives in `template.html`.

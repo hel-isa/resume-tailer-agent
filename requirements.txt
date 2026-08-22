@@ -1,0 +1,6 @@
+# Runtime dependencies for resume-tailor-agent.
+# Pinned so Dependabot / SCA can flag known vulnerabilities and newer releases.
+# Install: pip install -r requirements.txt
+
+# HTML-to-PDF rendering for the tailored resume (template.html -> PDF).
+weasyprint==69.0
