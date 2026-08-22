@@ -1,16 +1,19 @@
 version: 2
+
 updates:
   # Python dependencies (WeasyPrint and anything added to requirements.txt)
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "weekly"
+      day: "saturday"
     open-pull-requests-limit: 5
     labels:
       - "dependencies"
+      - "python"
       - "security"
 
-  # GitHub Actions used in workflows (keeps the CodeQL action itself current)
+  # GitHub Actions used in workflows (keeps the CodeQL/security actions current)
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
