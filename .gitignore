@@ -1,0 +1,21 @@
+# Private data — NEVER commit. The agent's real facts and history stay local.
+profile.md
+preferences.md
+job-search-filters.md
+
+# Generated output and application history
+resumes/
+tracker/
+responses/
+build*.html
+*.pdf
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Keep the examples tracked (do not ignore *.example.md)
+!*.example.md
